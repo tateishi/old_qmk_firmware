@@ -5,6 +5,20 @@
 #define ____ KC_TRNS
 #define xxxx KC_NO
 
+#define KEYMAP_T( \
+          K000, K001, K002, K003, K004, K005, K006, K007, K008, K009, K010, K011, K012, K013, K014, \
+          K100,       K102, K103, K104, K105, K106, K107, K108, K109, K110, K111, K112, K113, K114, \
+          K200,       K202, K203, K204, K205, K206, K207, K208, K209, K210, K211, K212, K213,       \
+          K300,       K302, K303, K304, K305, K306, K307, K308, K309, K310, K311,       K313, K314, \
+          K400, K401,       K403, K404,       K406,       K408,       K410, K411,       K413, K414  \
+) { \
+        { K000, K001, K002, K003, K004, K005, K006, K007, K008, K009, K010, K011, K012, K013, K014 }, \
+        { K100, xxxx, K102, K103, K104, K105, K106, K107, K108, K109, K110, K111, K112, K113, K114 }, \
+        { K200, xxxx, K202, K203, K204, K205, K206, K207, K208, K209, K210, K211, K212, K213, xxxx }, \
+        { K300, xxxx, K302, K303, K304, K305, K306, K307, K308, K309, K310, K311, xxxx, K313, K314 }, \
+        { K400, K401, xxxx, K403, K404, xxxx, K406, xxxx, K408, xxxx, K410, K411, xxxx, K413, K414 }  \
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* ,-----------------------------------------------------------.
@@ -20,12 +34,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------'
      */
 
-    KEYMAP(
-           F(0),    KC_1,    KC_2,    KC_3,    KC_4,   KC_5,   KC_6,    KC_7,  KC_8,  KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_GRV,
-           KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,   KC_T,   KC_Y,    KC_U,  KC_I,  KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,
-           KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,   KC_G,   KC_H,    KC_J,  KC_K,  KC_L,    KC_SCLN, KC_QUOT, KC_ENT,
-           KC_LSFT, xxxx,    KC_Z,    KC_X,    KC_C,   KC_V,   KC_B,    KC_N,  KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, xxxx,
-           KC_LCTL, KC_LGUI, KC_LALT, KC_BSPC, KC_SPC, KC_SPC, KC_RALT, MO(2), KC_NO, MO(1),   KC_RCTL),
+    KEYMAP_T(
+           F(0),    KC_1,    KC_2,    KC_3,    KC_4,   KC_5,   KC_6,    KC_7,  KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_GRV,
+           KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,   KC_T,   KC_Y,    KC_U,  KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,
+           KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,   KC_G,   KC_H,    KC_J,  KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT,
+           KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,   KC_B,   KC_N,    KC_M,  KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, xxxx,
+           KC_LCTL, KC_LGUI, KC_LALT, KC_BSPC, KC_SPC, KC_SPC, KC_RALT, MO(2), MO(1),   KC_RCTL),
 
     /* ,-----------------------------------------------------------.
      * |  `| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|Ins|Bsp|
@@ -40,12 +54,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------'
      */
 
-    KEYMAP(
+    KEYMAP_T(
            KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12, KC_INS, KC_BSPC,
            ____,    RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, ____,    ____,    KC_UP,   ____,   RESET,
            ____,    ____,    ____,    ____,    ____,    ____,    ____,    ____,    KC_HOME, KC_PGUP, KC_LEFT, KC_RGHT, ____,
-           ____,    ____,    ____,    ____,    BL_DEC,  BL_TOGG, BL_INC,  BL_STEP, ____,    KC_END,  KC_PGDN, KC_DOWN, ____,   xxxx,
-           ____,    ____,    ____,    ____,    ____,    ____,    ____,    ____,    ____,    ____,    ____),
+           ____,    ____,    ____,    BL_DEC,  BL_TOGG, BL_INC,  BL_STEP, ____,    KC_END,  KC_PGDN, KC_DOWN, ____,   ____,
+           ____,    ____,    ____,    ____,    ____,    ____,    ____,    ____,    ____,    ____),
 
     /* ,-----------------------------------------------------------.
      * |   |M01|M02|M03|M04|M05|M06|M07|M08|M09|M10|M11|M12|   |   |
@@ -60,12 +74,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------'
      */
 
-    KEYMAP(
+    KEYMAP_T(
            ____, M(1), M(2), M(3), M(4), M(5), M(6), M(7), M(8), M(9), M(10), M(11), M(12), ____, ____,
            ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,  ____,  ____,  ____,
            ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,  ____,  ____,
-           ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,  ____,  ____,  xxxx,
-           ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____),
+           ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,  ____,  ____,
+           ____, ____, ____, ____, ____, ____, ____, ____, ____, ____),
 };
 
 enum function_id {
